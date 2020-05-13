@@ -61,7 +61,7 @@ function AnimalList(props) {
                 age={animal.age}
                 gender={animal.gender}
                 id={animal.catId ? animal.catId : animal.dogId}
-                link={`https://source.unsplash.com/200x200/?${animal.catId ? 'cat' : 'dog'}`}
+                link={`https://source.unsplash.com/200x200/?${animal.catId ? 'cat' : 'dog'} ${animal.breed}`}
                 onAnimalAdoption={handleAnimalAdoption}
                 key={animal.catId ? animal.catId : animal.dogId}
               />

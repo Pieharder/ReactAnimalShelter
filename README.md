@@ -12,15 +12,7 @@
 
 ## A animal shelter frontend application built with React and Love.
 
-#### By Dusty McCord, Steph Podolak, Patrick Kille, Geoff Snuggleupkins
-
-## VIEW DEPLOYED SITE: 
-coming soon...
-
-## Page Preview
-
-![Diagram](#)
-coming soon ...
+#### By Dusty McCord, Steph Podolak, Patrick Kille, Geoff Goetz
 
 ## Components Hierarchy
 
@@ -41,16 +33,82 @@ coming soon ...
 | Dog Details | Users should be able to view a specific dog's details by clicking on a dog in the dog list |
 | Adopt a Dog | Users should be able to adopt a dog and that dog would be removed from the shelter list |
 
-## Installation/Setup
+## Setup/Installation Requirements
+
+### Install .NET Core
+
+#### on macOS:
+* _[Click here](https://dotnet.microsoft.com/download/thank-you/dotnet-sdk-2.2.106-macos-x64-installer) to download a .NET Core SDK from Microsoft Corp._
+* _Open the file (this will launch an installer which will walk you through installation steps. Use the default settings the installer suggests.)_
+
+#### on Windows:
+* _[Click here](https://dotnet.microsoft.com/download/thank-you/dotnet-sdk-2.2.203-windows-x64-installer) to download the 64-bit .NET Core SDK from Microsoft Corp._
+* _Open the .exe file and follow the steps provided by the installer for your OS._
+
+#### Install dotnet script
+_Enter the command ``dotnet tool install -g dotnet-script`` in Terminal (macOS) or PowerShell (Windows)._
+
+### Install MySQL and MySQL Workbench
+
+#### on macOS:
+_Download the MySQL Community Server DMG File [here](https://dev.mysql.com/downloads/file/?id=484914). Follow along with the installer until you reach the configuration page. Once you've reached Configuration, set the following options (or user default if not specified):_
+* use legacy password encryption
+* set password (and change the password field in appsettings.json file of this repository to match your password)
+* click finish
+* open Terminal and enter the command ``echo 'export PATH="/usr/local/mysql/bin:$PATH"' >> ~/.bash_profile`` if using Git Bash.
+* Verify MySQL installation by opening Terminal and entering the command ``mysql -uroot -p{your password here, omitted brackets}``. If you gain access to the MySQL command line, installation is complete. An error (e.g., -bash: mysql: command not found) indicates something went wrong.
+
+_Download MySQL Workbench DMG file [here](https://dev.mysql.com/downloads/file/?id=484391). Install MySQL Workbench to Applications folder. Open MySQL Workbench and select Local instance 3306 server, then enter the password you set. If it connects, you're all set._
+
+#### on Windows:
+_Download the MySQL Web Installer [here](https://dev.mysql.com/downloads/file/?id=484919) and follow along with the installer. Click "Yes" if prompted to update, and accept license terms._
+* Choose Custom setup type
+* When prompted to Select Products and Features, choose the following: MySQL Server (Will be under MySQL Servers) and MySQL Workbench (Will be under Applications)
+* Select Next, then Execute. Wait for download and installation (can take a few minutes)
+* Advance through Configuration as follows:
+  - High Availability set to Standalone.
+  - Defaults are OK under Type and Networking.
+  - Authentication Method set to Use Legacy Authentication Method.
+  - Set password to epicodus. You can use your own if you want but epicodus will be assumed in the lessons.
+  - Unselect Configure MySQL Server as a Windows Service.
+* Complete installation process
+
+_Add the MySQL environment variable to the System PATH. Instructions for Windows 10:_
+* Open the Control Panel and visit _System > Advanced System Settings > Environment Variables..._
+* Select _PATH..._, click _Edit..._, then _Add_.
+* Add the exact location of your MySQL installation and click _OK_. (This location is likely C:\Program Files\MySQL\MySQL Server 8.0\bin, but may differ depending on your specific installation.)
+* Verify installation by opening Windows PowerShell and entering the command ``mysql -uroot -p{your password here, omitted brackets}``. It's working correctly if you gain access to the MySQL command line. Exit MySQL by entering the command ``exit``.
+* Open MySQL Workbench and select Local instance 3306 server (may be named differently). Enter the password you set, and if it connects, you're all set.
+
+### To Clone and Run this project:
 
 Clone the project by typing this command into your terminal.
 ```sh
-git clone https://github.com/dustatron/quality-survey-time.git
+git clone https://github.com/PRKille/ReactAnimalShelter.git
 ```
 
 Navigate to the new project folder by typing:
 ```sh
-cd quality-survey-time
+cd ReactAnimalShelter
+```
+To Start the database server:
+Navigate to the database folder with:
+```sh
+cd AnimalShelter.Solution
+cd AnimalShelter
+```
+Install all required packages and start the server by inputting:
+```sh
+dotnet restore
+dotnet build
+dotnet ef database update
+dotnet run
+```
+Move to the project directory with:
+```sh
+cd ..
+cd ..
+cd ReactAnimalShelter
 ```
 
 Install all required packages with this command:
@@ -59,7 +117,6 @@ npm install
 ```
 
 In the project directory, you can run: 
-
  ```sh
  npm start
 ```
@@ -99,7 +156,7 @@ Instead, it will copy all the configuration files and the transitive dependencie
 You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
 
 ## Support and Contact Details
-_Have a bug or an issue with this application? [Open a new issue](https://github.com/dustatron/quality-survey-time/issues) here on GitHub._
+_Have a bug or an issue with this application? [Open a new issue](https://github.com/PRKille/ReactAnimalShelter/issues) here on GitHub._
 
 ## Technologies Used
 * This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
@@ -108,4 +165,4 @@ _Have a bug or an issue with this application? [Open a new issue](https://github
 ## License
 [MIT](https://choosealicense.com/licenses/mit/)
 
-Copyright (c) 2020 **_Dusty McCord, Steph Podolak_**
+Copyright (c) 2020 **_Dusty McCord, Steph Podolak, Geoff Goetz, Patrick Kille_**

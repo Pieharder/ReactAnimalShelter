@@ -2,12 +2,12 @@ import React from 'react';
 import { Row, Card, Col, Form, Button } from 'react-bootstrap';
 import { useHistory } from 'react-router-dom';
 
-function AddAnimal() {
+function AddAnimal(props) {
   const history = useHistory();
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    const { name, breed, age, gender } = e.target;
+    const { name, breed, age, gender, animal } = e.target;
 
     let myHeaders = new Headers();
     myHeaders.append('Content-Type', 'application/json');
@@ -26,9 +26,12 @@ function AddAnimal() {
       redirect: 'follow'
     };
 
-    fetch('http://localhost:5000/api/cats', requestOptions)
+    fetch(`http://localhost:5000/api/${animal.value}`, requestOptions)
       .then((response) => response.text())
-      .then((result) => history.push('/list'))
+      .then((result) => {
+        props.onAnimalClick(animal.value);
+        history.push(`/list/${animal.value}`);
+      })
       .catch((error) => console.log('error', error));
   };
 
@@ -41,6 +44,16 @@ function AddAnimal() {
           </Card.Header>
           <Card.Body>
             <Form onSubmit={handleSubmit}>
+              <Form.Group>
+                <Form.Label as="legend" column sm={2}>
+                  Species:
+                </Form.Label>
+                <Col sm={10}>
+                  <Form.Check type="radio" label="Cats" name="animal" id="animal1" value="cats" />
+                  <Form.Check type="radio" label="Dogs" name="animal" id="animal2" value="dogs" />
+                </Col>
+              </Form.Group>
+
               <Form.Group>
                 <Form.Control type="text" name="name" placeholder="Name" />
               </Form.Group>

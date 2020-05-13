@@ -7,7 +7,9 @@ function Header(props) {
   return (
     <div>
       <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark">
-        <Navbar.Brand href="#">ShamWoW!</Navbar.Brand>
+        <Navbar.Brand as={Link} to="/">
+          ShelterWoW!
+        </Navbar.Brand>
         <Navbar.Toggle aria-controls="responsive-navbar-nav" />
         <Navbar.Collapse id="responsive-navbar-nav">
           <Nav className="mr-auto">
@@ -34,13 +36,15 @@ function Header(props) {
               >
                 Dogs
               </NavDropdown.Item>
-              <NavDropdown.Item href="#">Lizard People</NavDropdown.Item>
+              <NavDropdown.Item to="/lizardpeople" as={Link}>
+                Lizard People
+              </NavDropdown.Item>
             </NavDropdown>
           </Nav>
           <Nav>
-            <Nav.Link href="#deets">More deets</Nav.Link>
+            <Nav.Link href="#normies">Normie Memes</Nav.Link>
             <Nav.Link eventKey={2} href="#memes">
-              Dank memes
+              Dank Memes
             </Nav.Link>
           </Nav>
         </Navbar.Collapse>
